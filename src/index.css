@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* styles.css */
+.active-link .MuiListItem-root {
+    background-color: white;
+    color: black;
+}
+
+.inactive-link .MuiListItem-root {
+    color: white;
+}
+
+.hover:bg-gray-200:hover {
+    background-color: #e2e8f0; /* Tailwind's gray-200 color */
+}
