@@ -7,16 +7,20 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './common/btracker-routes/routes';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './common/theme';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './common/tanstack';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

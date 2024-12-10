@@ -11,10 +11,14 @@ import { CashItems } from './components/cash-items';
 import { DeductionItem } from './components/deduction-item';
 import { TransitionGroup } from 'react-transition-group';
 import { useForm } from 'react-hook-form';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { usePostIncome } from './api/hooks';
+
 
 
 const CreateIncomeForm: React.FC = () => {
     const { data, setIsAddingCash } = useAddIncomeStore();
+    const { mutate, status } = usePostIncome();
 
     const {
         control,
@@ -33,8 +37,8 @@ const CreateIncomeForm: React.FC = () => {
 
 
     const onSubmit = (formData: IncomeData) => {
-        console.log('data', data);
-        console.log('formData', formData);
+
+        mutate(formData);
     };
 
     const addBank = () => {
@@ -125,17 +129,22 @@ const CreateIncomeForm: React.FC = () => {
                                     </IconButton>
                                 }
                             >
-                                <ListItemText primary={ <DeductionItem index={i} control={control} errors={errors} removeDeduction={removeDeduction} />} />
+                                <ListItemText primary={<DeductionItem index={i} control={control} errors={errors} removeDeduction={removeDeduction} />} />
                             </ListItem>
                         }</Collapse>
                     ))}
                 </TransitionGroup>
-        
+
 
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', mb: '30px' }}>
-                    <Button type="submit" variant="contained" color="secondary" sx={{ mt: 3, borderRadius: '50px' }}>
+                    <LoadingButton
+                        loading={status === "pending"}
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                        sx={{ mt: 3, borderRadius: '50px' }}>
                         Submit
-                    </Button>
+                    </LoadingButton>
                 </Box>
             </Box>
         </>
