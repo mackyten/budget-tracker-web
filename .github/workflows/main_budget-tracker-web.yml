@@ -67,4 +67,4 @@ jobs:
           app-name: 'budget-tracker-web'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9A650B4B50304A5DBAB77F85FC641EC3 }}
-          package: ./build
+          package: .
