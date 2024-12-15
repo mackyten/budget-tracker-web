@@ -27,11 +27,17 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Create an archive of build folder
+        run: |
+          mkdir -p artifacts
+          zip -r artifacts/build.zip build
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: artifacts/build.zip
+
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,11 +52,18 @@ jobs:
         with:
           name: node-app
 
+      - name: Extract the archive
+        run: |
+          mkdir -p build
+          unzip node-app/build.zip -d build
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'budget-tracker-web'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9A650B4B50304A5DBAB77F85FC641EC3 }}
-          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          package: ./build
+
+
