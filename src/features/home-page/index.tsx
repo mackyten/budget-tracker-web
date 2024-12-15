@@ -9,12 +9,9 @@ import {
   Divider,
 } from "@mui/material";
 import { AccountBalance, Add } from "@mui/icons-material";
-import useHomePageStore from "./api/store";
-import { modal } from "../../common/styles";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const App: React.FC = () => {
-  const { isCreating, setIsCreating } = useHomePageStore();
   const location = useLocation();
   const theme = useTheme();
   const navigate = useNavigate();
