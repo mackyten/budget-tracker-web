@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
-const baseURL = "http://localhost:8050";//process.env.REACT_APP_BASE_URL;
-console.log('baseURL',baseURL);
+
+const baseURL = process.env.REACT_APP_BASE_URL || "notfound";
+console.log("Connecting to: ", baseURL)
 export const api: AxiosInstance = axios.create({
     baseURL: baseURL,
     headers: {
