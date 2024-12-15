@@ -30,7 +30,8 @@ jobs:
       - name: Create an archive of build folder
         run: |
           mkdir -p artifacts
-          zip -r artifacts/build.zip build          
+          Compress-Archive -Path build\* -DestinationPath artifacts/build.zip
+        shell: pwsh          
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
