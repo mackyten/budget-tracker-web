@@ -58,7 +58,7 @@ jobs:
       - name: Extract the archive
         run: |
           mkdir -p build
-          unzip node-app/build.zip -d build
+          unzip build.zip -d build
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
