@@ -10,12 +10,10 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { IColumn } from "./api/types";
 import { useGetIncomeList } from "./api/hooks";
 import { incomeListStore } from "./api/store";
 import { IncomeData } from "../../create-expense/api/types";
 import {
-  denominations,
   getDenominationValue,
 } from "../../../common/enums/denominations";
 import { formatDate } from "../../../common/helpers/date";
