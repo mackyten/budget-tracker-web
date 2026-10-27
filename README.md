@@ -1,5 +1,7 @@
 # Budget Tracker (Web)
 
+[![CI](https://github.com/mackyten/budget-tracker-web/actions/workflows/ci.yml/badge.svg)](https://github.com/mackyten/budget-tracker-web/actions/workflows/ci.yml)
+
 React front end for tracking income, cash and bank balances. It talks to [budget-tracker-api](https://github.com/mackyten/budget-tracker-api).
 
 ## Tech stack
