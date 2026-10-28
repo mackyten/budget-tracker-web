@@ -34,3 +34,7 @@ src/
   features/   create-expense, home-page, info-page (api, store, components per feature)
   common/     shared components, helpers, theme, routes
 ```
+
+## License
+
+[MIT](LICENSE)
